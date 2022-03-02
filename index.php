@@ -8,6 +8,5 @@
             echo "¡Hola, soy un script de PHP!<p> ";
             require_once("Lib/connection.php");
         ?>
-
     </body>
 </html>
