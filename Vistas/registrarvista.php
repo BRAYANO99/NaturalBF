@@ -34,7 +34,7 @@
          </div>
          <input type="submit" value="Registrate" class="button" name="registro">
          <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-         <p>¿Ya tienes una cuenta?<a class="link" href="loginvista.html">Iniciar Sesion</a></p>
+         <p>¿Ya tienes una cuenta?<a class="link" href="loginvista.php">Iniciar Sesion</a></p>
      </div>
      <?php
         require_once("../Lib/connection.php");
