@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>NaturalBF</title>
-        <link rel="stylesheet" href="estilos.css">
+        <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
         <nav id="menu">
@@ -10,7 +10,7 @@
         
             <li><h1>NaturalBF<h1></li>
             <li class="item-c"><a href="">Sesion</a></li>
-            <li class="item-c"><a href="">Tienda</a></li>
+            <li class="item-c"><a href="tienda.php">Tienda</a></li>
             <li class="item-c"><a href="">Carrito</a></li>
             <li class="item-c"><a href="">Inicio</a></li>
             <li class="item-c"><a href="">Sobre nosotros</a></li>
