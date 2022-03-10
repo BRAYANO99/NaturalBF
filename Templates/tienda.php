@@ -1,3 +1,7 @@
+<?php
+    //Conexion a la base de datos
+    include '../Global/connection.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,12 +14,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><!--Script de bootstrap para la descripcion-->
     <title>Tienda</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <!--Logo de la empresa con link para el inicio-->
-        <a class="navbar-brand" href="index.php">Logo de la empresa</a>
+        <a class="navbar-brand" href="index.php"><img src="img/logotipo.png" alt="Inicio" width="45px"></a>
         <!--Boton que se muestra cuando la pantalla es de un celular-->
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,87 +47,16 @@
         </div>
         <!--Zona de los elementos a seguir-->
         <div class="row">
-            <d class="col-3">
-                <div class="card">
-                    <img
-                    title="Título producto"
-                    alt="Titulo"
-                    class="card-img-top"
-                    src="../Archivos/Img/Achiote.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">$300.00</h5>
-                        <p class="card-text">Descripción</p>
-                        <button class="btn btn-primary" type="button" name="btnAccion" value="Agregar" type="submit">
-                            Agregar al carrito
-                        </button>
-                    </div>
-                </div>
-            </d>
-            <d class="col-3">
-                <div class="card">
-                    <img
-                    title="Título producto"
-                    alt="Titulo"
-                    class="card-img-top"
-                    src="../Archivos/Img/Achiote.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">$300.00</h5>
-                        <p class="card-text">Descripción</p>
-                        <button class="btn btn-primary" type="button" name="btnAccion" value="Agregar" type="submit">
-                            Agregar al carrito
-                        </button>
-                    </div>
-                </div>
-            </d>
-            <d class="col-3">
-                <div class="card">
-                    <img
-                    title="Título producto"
-                    alt="Titulo"
-                    class="card-img-top"
-                    src="../Archivos/Img/Achiote.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">$300.00</h5>
-                        <p class="card-text">Descripción</p>
-                        <button class="btn btn-primary" type="button" name="btnAccion" value="Agregar" type="submit">
-                            Agregar al carrito
-                        </button>
-                    </div>
-                </div>
-            </d>
-            <d class="col-3">
-                <div class="card">
-                    <img
-                    title="Título producto"
-                    alt="Titulo"
-                    class="card-img-top"
-                    src="../Archivos/Img/Achiote.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">$300.00</h5>
-                        <p class="card-text">Descripción</p>
-                        <button class="btn btn-primary" type="button" name="btnAccion" value="Agregar" type="submit">
-                            Agregar al carrito
-                        </button>
-                    </div>
-                </div>
-            </d>
-            <d class="col-3">
-                <div class="card">
-                    <img
-                    title="Título producto"
-                    alt="Titulo"
-                    class="card-img-top"
-                    src="../Archivos/Img/Achiote.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">$300.00</h5>
-                        <p class="card-text">Descripción</p>
-                        <button class="btn btn-primary" type="button" name="btnAccion" value="Agregar" type="submit">
-                            Agregar al carrito
-                        </button>
-                    </div>
-                </div>
-            </d>
+            <?php
+                //Metodo para mostrar los productos
+                include 'function/productos.php';
+            ?>       
         </div>
     </div>
+    <script>
+        $(function () {//Funcion de popover
+            $('[data-toggle="popover"]').popover();//Revisa que todos las etiquetas tengan data-toggle="popover" para hacer la animación
+        });
+    </script>
 </body>
 </html>
