@@ -31,8 +31,8 @@
          <input type="submit" value="Login" class="button" name="login">
          <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
          <p>¿No tienes una cuenta? <a class="link" href="registrarvista.php">Registrate </a></p>
-         <?php
-            require_once("../Lib/connection.php");//Llamado de libreria
+         <?php //Codigo php
+            require_once("../Global/connection.php");//Llamado de libreria
             if(isset($_POST['login'])){
                 if(!empty($_POST['correo']) && !empty($_POST['pass'])){
                     $correo = $_POST['correo'];//Variable de correo

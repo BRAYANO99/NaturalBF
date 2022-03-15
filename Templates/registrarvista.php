@@ -36,8 +36,8 @@
          <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
          <p>¿Ya tienes una cuenta?<a class="link" href="loginvista.php">Iniciar Sesion</a></p>
      </div>
-     <?php
-        require_once("../Lib/connection.php");
+     <?php //Codigo php
+        require_once("../Global/connection.php");
         
         
         if(isset($_POST['registro'])){
