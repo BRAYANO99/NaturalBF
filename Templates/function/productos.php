@@ -19,9 +19,15 @@
                 <button type="button" class="btn btn-secondary" data-toggle="popover" title="'.$consulta['Descripcion'].'">
                     Descripcion
                 </button>
-                <button class="btn btn-primary" type="button" name="btnAccion" value="Agregar" type="submit">
-                    Agregar al carrito
-                </button>
+                <form action="" method="post">
+                    <input type="text" name="id" id="id" value="'.openssl_encrypt($consulta['ID_Producto'],COD,KEY).'">
+                    <input type="text" name="nombre" id="nombre" value="'.openssl_encrypt($consulta['Nombre'],COD,KEY).'">
+                    <input type="text" name="precio" id="precio" value="'.openssl_encrypt($consulta['Precio'],COD,KEY).'">
+                    <input type="text" name="cantidad" id="cantidad" value="'.openssl_encrypt("1",COD,KEY).'">
+                    <button class="btn btn-primary" name="btnAccion" value="Agregar" type="submit">
+                        Agregar al carrito
+                    </button>
+                </form>
             </div>
         </div>
         </d>

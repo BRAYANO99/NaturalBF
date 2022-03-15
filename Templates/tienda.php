@@ -1,6 +1,8 @@
 <?php
     //Conexion a la base de datos
     include '../Global/connection.php';
+    //Conexion para la encriptación
+    include "../Global/config_encrypt.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,7 +44,10 @@
         <br>
         <!--Alerta de carrito-->
         <div class="alert alert-success">
-            Pantalla de mensaje
+            <?php 
+            include "function/carrito.php";
+            echo $mensaje;
+            ?>
             <a href="#" class="badge badge-success">Ver carrito</a>
         </div>
         <!--Zona de los elementos a seguir-->
