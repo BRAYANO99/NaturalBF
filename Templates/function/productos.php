@@ -9,8 +9,7 @@
             title="'.$consulta['Nombre'].'"
             alt="'.$consulta['Nombre'].'"
             class="card-img-top"
-            width="100px"
-            height="200px"
+            height="317px"
             src=data:image/png;base64,'.base64_encode($consulta['Imagen']).'
             >
             <div class="card-body">
@@ -20,10 +19,10 @@
                     Descripcion
                 </button>
                 <form action="" method="post">
-                    <input type="text" name="id" id="id" value="'.openssl_encrypt($consulta['ID_Producto'],COD,KEY).'">
-                    <input type="text" name="nombre" id="nombre" value="'.openssl_encrypt($consulta['Nombre'],COD,KEY).'">
-                    <input type="text" name="precio" id="precio" value="'.openssl_encrypt($consulta['Precio'],COD,KEY).'">
-                    <input type="text" name="cantidad" id="cantidad" value="'.openssl_encrypt("1",COD,KEY).'">
+                    <input type="hidden" name="id" id="id" value="'.openssl_encrypt($consulta['ID_Producto'],COD,KEY).'">
+                    <input type="hidden" name="nombre" id="nombre" value="'.openssl_encrypt($consulta['Nombre'],COD,KEY).'">
+                    <input type="hidden" name="precio" id="precio" value="'.openssl_encrypt($consulta['Precio'],COD,KEY).'">
+                    <input type="hidden" name="cantidad" id="cantidad" value="'.openssl_encrypt("1",COD,KEY).'">
                     <button class="btn btn-primary" name="btnAccion" value="Agregar" type="submit">
                         Agregar al carrito
                     </button>

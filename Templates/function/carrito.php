@@ -31,17 +31,37 @@
                         'PRECIO'=>$PRECIO
                     );
                     $_SESSION['CARRITO'][0]=$producto;//Primer Producto, inicia session del carrito
+                    $mensaje = "Producto agregado al carrito";
                 }else{//El carrito tiene productos
-                    $NumeroProductos=count($_SESSION['CARRITO']);//cuenta sesiones del carrito o numero de productos
-                    $producto=array(
-                        'ID'=>$ID,
-                        'NOMBRE'=>$NOMBRE,
-                        'CANTIDAD'=>$CANTIDAD,
-                        'PRECIO'=>$PRECIO
-                    );
-                    $_SESSION['CARRITO'][$NumeroProductos]=$producto;
+                    $idProductos=array_column($_SESSION['CARRITO'],"ID");
+                    if(in_array($ID,$idProductos)){
+                        echo "<script>alert('El producto ya ha sido seleccionado..');</script>";
+                        $mensaje="";
+                    }else{
+                        $NumeroProductos=count($_SESSION['CARRITO']);//cuenta sesiones del carrito o numero de productos
+                        $producto=array(
+                            'ID'=>$ID,
+                            'NOMBRE'=>$NOMBRE,
+                            'CANTIDAD'=>$CANTIDAD,
+                            'PRECIO'=>$PRECIO
+                        );
+                        $_SESSION['CARRITO'][$NumeroProductos]=$producto;
+                        $mensaje = "Producto agregado al carrito";
+                    }
                 }
-                $mensaje = print_r($_SESSION,true);
+                
+            break;
+
+            case "Eliminar":
+                if(is_numeric(openssl_decrypt($_POST['id'],COD,KEY))){
+                    $ID = openssl_decrypt($_POST['id'],COD,KEY);
+                    foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                        if($producto['ID']==$ID){
+                            unset($_SESSION['CARRITO'][$indice]);
+                            echo "<script>alert('Elemento borrado...');</script>";
+                        }
+                    }
+                }
             break;
         }
     }
