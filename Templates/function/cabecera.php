@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <!--Logo de la empresa con link para el inicio-->
-        <a class="navbar-brand" href="index.php"><img src="img/logotipo.png" alt="Inicio" width="45px"></a>
+        <a class="navbar-brand" href="index.html"><img src="img/logotipo.png" alt="Inicio" width="45px"></a>
         <!--Boton que se muestra cuando la pantalla es de un celular-->
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

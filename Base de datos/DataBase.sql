@@ -16,5 +16,17 @@ CREATE TABLE Producto (
     Precio DECIMAL(20,2) NOT NULL ,  
     Imagen LONGBLOB NOT NULL ,
     Descripcion TEXT NULL ,
-    PRIMARY KEY  (`ID_Producto`)
+    PRIMARY KEY  (ID_Producto)
 );
+--Tabla de Ventas--
+CREATE TABLE Ventas ( 
+    ID_Venta INT NOT NULL AUTO_INCREMENT,
+    ID_Usuario  INT NOT NULL,
+    ClaveDeTransaccion VARCHAR(250) NOT NULL,
+    PaypalDatos TEXT NOT NULL,  
+    Fecha DATETIME NOT NULL,
+    Total DECIMAL(60,2) NOT NULL,
+    Status VARCHAR(200) NOT NULL,
+    PRIMARY KEY  (ID_Venta),
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario)
+); 
