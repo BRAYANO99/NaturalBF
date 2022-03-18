@@ -1,12 +1,7 @@
 <?php
     session_start();
-    if($_SESSION['ID_Usuario'] == " "){
-        echo "Inicio no de sesion";
-    }else{
-        echo "Inicio de sesion";
-        if(isset($_SESSION['Pago'])){
-            header("Location: pagar.php");
-        }
+    if(isset($_SESSION['ID_Usuario'])){
+        header("Location: tienda.php");
     }
 ?>
 <!DOCTYPE html>
@@ -54,6 +49,12 @@
                     $count = mysqli_num_rows($result);//Obtener el numero de filas
                     if($count == 1){//Si es 1    
                         $_SESSION['ID_Usuario'] = $consulta['ID_Usuario'];//Almacena el ID
+                        if(isset($_SESSION['Pago'])){
+                            echo"<script>alert('Procede a pagar por que la session de pago es ".$_SESSION['Pago']."');</script>";
+                            header("Location: pagar.php");
+                        }else{
+                            header("Location: tienda.php");
+                        }
                     }else{//Si es más de 1 o 0  
                         echo "Error";
                     }

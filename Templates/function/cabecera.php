@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--CSS de BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--JS de BOOTSTRAP-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div id="my-nav" class="collapse navbar-collapse">
+        <div id="navbarText" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Inicio</span></a>
@@ -29,11 +29,41 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="tienda.php">Tienda</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="carrito.php">Carrito(<?php
                         echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
                     ?>)</a>
                 </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <?php
+                    if(!isset($_SESSION['ID_Usuario'])){
+                        ?>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="login.php">Inicio de Sesión</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="registrar.php">Crear una cuenta</span></a>
+                            </li>
+                        <?php
+                    }else{
+                        ?>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="">
+                                    <?php
+                                        $SQL = "SELECT Nombre FROM Usuario WHERE ID_Usuario = '".$_SESSION['ID_Usuario']."' ";
+                                        $result = mysqli_query($conexion_normal,$SQL);
+                                        $consulta = mysqli_fetch_array($result);
+                                        echo $consulta['Nombre'];
+                                    ?>
+                                </span></a>
+                            </li>
+                                <a class="nav-link" href="function/cerrarsesion.php">Cerrar Sesion</span></a>
+                            </li>
+                        <?php
+                    }
+                ?>
+                
             </ul>
         </div>
     </nav>

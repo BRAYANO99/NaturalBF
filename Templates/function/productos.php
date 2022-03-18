@@ -14,7 +14,7 @@
             >
             <div class="card-body">
                 <span>'.$consulta['Nombre'].'</span>
-                <h5 class="card-title">$'.$consulta['Precio'].'</h5>
+                <h5 class="card-title">$'.$consulta['Precio'].'/Kg</h5>
                 <button type="button" class="btn btn-secondary" data-toggle="popover" title="'.$consulta['Descripcion'].'">
                     Descripcion
                 </button>

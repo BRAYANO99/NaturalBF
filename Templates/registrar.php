@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['ID_Usuario'])){
+        header("Location: tienda.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
