@@ -35,7 +35,18 @@
                 }else{//El carrito tiene productos
                     $idProductos=array_column($_SESSION['CARRITO'],"ID");
                     if(in_array($ID,$idProductos)){
-                        echo "<script>alert('El producto ya ha sido seleccionado..');</script>";
+                        foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                            if($producto['ID']==$ID){
+                                $a = number_format($producto['CANTIDAD']) + 1;
+                                $_SESSION['CARRITO'][$indice]=array(
+                                    'ID'=>$producto['ID'],
+                                    'NOMBRE'=>$producto['NOMBRE'],
+                                    'CANTIDAD'=>$a,
+                                    'PRECIO'=>$producto['PRECIO']
+                                );
+                                echo "<script>alert('El producto ya ha sido agregado por lo que fue sumado');</script>";
+                            }
+                        }
                         $mensaje="";
                     }else{
                         $NumeroProductos=count($_SESSION['CARRITO']);//cuenta sesiones del carrito o numero de productos
@@ -59,6 +70,26 @@
                         if($producto['ID']==$ID){
                             unset($_SESSION['CARRITO'][$indice]);
                             echo "<script>alert('Elemento borrado...');</script>";
+                        }
+                    }
+                }
+            break;
+
+            case "Cantidad":
+                if(is_numeric(openssl_decrypt($_POST['id'],COD,KEY))){
+                    $cantidad_cambiar = $_POST['cantidad'];
+                    $ID = openssl_decrypt($_POST['id'],COD,KEY);
+                    foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                        if($producto['ID']==$ID){
+                            if($producto['ID']==$ID){
+                                $_SESSION['CARRITO'][$indice]=array(
+                                    'ID'=>$producto['ID'],
+                                    'NOMBRE'=>$producto['NOMBRE'],
+                                    'CANTIDAD'=>$cantidad_cambiar,
+                                    'PRECIO'=>$producto['PRECIO']
+                                );
+                                echo "<script>alert('Cantidad cambiada');</script>";
+                            }
                         }
                     }
                 }

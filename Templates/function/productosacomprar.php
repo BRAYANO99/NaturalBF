@@ -16,7 +16,15 @@
         ?>
         <tr>
             <td width="40%"><?php echo $producto['NOMBRE']?></td>
-            <td width="15%" class="text-center"><?php echo $producto['CANTIDAD']?></td>
+            <td width="15%" class="text-center">
+                <form action="" method="post">
+                    <input type="number" name="cantidad" id="points" name="points" step="1" min="1" value="<?php echo $producto['CANTIDAD']?>">
+                    <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($producto["ID"],COD,KEY)?>">
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-warning" name="btnAccion" value="Cantidad">Cambiar cantidad</button>
+                </form>
+            </td>
             <td width="20%" class="text-center"><?php echo $producto['PRECIO']?></td>
             <td width="20%" class="text-center"><?php echo number_format($producto['PRECIO']*$producto['CANTIDAD'],2)?></td>
             <td width="5%">
@@ -38,7 +46,7 @@
         <tr>
             <td colspan="5">
                 <form method="post" action="pagar.php">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit" value="proceder" name="btnAccion">
+                    <button class="btn btn-success btn-lg btn-block" type="submit" value="proceder" name="btnAccion">
                         Proceder a pagar >>
                     </button>
                 </form>

@@ -19,13 +19,9 @@
 <br>
 <br>
 <?php
-    $total=0;
-    foreach($_SESSION['CARRITO'] as $indidce=>$producto){
-        $total = $total+($producto['PRECIO']*$producto['CANTIDAD']);
-    }
-    echo $_SESSION['ID_Usuario'];
-    echo "<h3>".$total."</h3> ";
+    include "function/pagoinfo.php";
 ?>
+<br><br>
 <?php
     //Contenido de pie de pagina
     include "function/pie.php";
