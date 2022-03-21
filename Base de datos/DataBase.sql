@@ -37,6 +37,9 @@ CREATE TABLE Ventas_Productos(
     ID_VP INT NOT NULL AUTO_INCREMENT,
     ID_Venta INT NOT NULL,
     ID_Producto INT NOT NULL,
+    Cantidad INT NOT NULL,
+    PrecioUnitario DECIMAL(60,2) NOT NULL,
+    PrecioTotal DECIMAL(60,2) NOT NULL,
     PRIMARY KEY  (ID_VP),
     FOREIGN KEY (ID_Venta) REFERENCES Ventas (ID_Venta),
     FOREIGN KEY (ID_Producto) REFERENCES Producto (ID_Producto)

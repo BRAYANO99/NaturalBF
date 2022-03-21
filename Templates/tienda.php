@@ -9,6 +9,9 @@
     include "function/cabecera.php";
 ?>
 <br>
+
+    <p>El precio de envío viene incluido en los productos</p>
+
     <?php if($mensaje!=""){?>
         <!--Alerta de carrito-->
         <div class="alert alert-success">

@@ -94,6 +94,27 @@
                     }
                 }
             break;
+
+            case "Pagar":
+                $no_tarjeta = $_POST['Tarjeta'];
+                $total = $_POST['Total'];
+                $id_usuario = $_SESSION['ID_Usuario'];
+                $domicilio = $_POST['Domicilio'];
+                $fecha = date("Y-m-d H:i:s");
+                $SQL = "INSERT INTO Ventas VALUES (null, '".$id_usuario."','".$no_tarjeta."','".$fecha."','".$total."','".$domicilio."')";
+                mysqli_query($conexion_normal,$SQL);
+                $SQL = "SELECT ID_Venta FROM Ventas WHERE ID_Usuario = '".$id_usuario."' AND Fecha = '".$fecha."'";
+                $result = mysqli_query($conexion_normal,$SQL);
+                $consulta = mysqli_fetch_array($result);
+                $id_venta = $consulta['ID_Venta'];
+                foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                    $total_cantidad = number_format($producto['PRECIO']*$producto['CANTIDAD'],2);
+                    $SQL = "INSERT INTO Ventas_Productos VALUES (null, '".$id_venta."', '".$producto['ID']."', '".$producto['CANTIDAD']."', '".$producto['PRECIO']."', '".$total_cantidad."')";
+                    mysqli_query($conexion_normal,$SQL);
+                    unset($_SESSION['CARRITO'][$indice]);
+                }
+                header("Location: tienda.php");
+            break;
         }
     }
 ?>
