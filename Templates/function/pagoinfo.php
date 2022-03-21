@@ -6,6 +6,9 @@
         echo "<h2>Nombre del cliente ".$consulta['Nombre']." </h2>";
     ?>
     <br><br>
+    <h3>Verifica que tu compra sea la deseada</h3>
+    Vez algun producto erroneo o una cantidad no desada puedes regresar a <a href="carrito.php">Carrito</a>
+    <br><br>
     <tbody>
         <tr>
             <th width="40%">Descripcion</th>
@@ -36,11 +39,9 @@
                 <label for="my-input">Domicilio a entregar</label>
                 <input type="text" id="my-input" class="form-control" placeholder="Escribe el domicilio a entregar" required>
                 <label for="my-input">Tarjeta</label>
-                <input type="text" id="my-input" class="form-control" placeholder="Escribe tu numero de tarjeta bancaria" required>
-                <label for="my-input">Tarjeta</label>
-                <input type="text" id="my-input" class="form-control" placeholder="Escribe tu numero de tarjeta bancaria" required>
+                <input maxlength="16" onkeypress="return Number(event)" type="text" id="my-input" class="form-control" placeholder="Escribe tu numero de tarjeta bancaria" required>
                 <label for="my-input">CVV</label>
-                <input type="text" id="my-input" class="form-control" placeholder="CVV" required>
+                <input maxlength="3" type="text" id="my-input" class="form-control" placeholder="CVV" onkeypress="return Number(event)" required>
                 <br>
                 <br>
                 <button class="btn btn-success btn-lg btn-block" type="submit" value="proceder" name="btnAccion">
@@ -50,3 +51,11 @@
         </tr>
     </tbody>
 </table>
+<script>
+    function Number(event){
+        if(event.charCode >= 48 && event.charCode <= 57){
+            return true;
+        }
+            return false; 
+        }
+</script>
