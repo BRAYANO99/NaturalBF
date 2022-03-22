@@ -1,4 +1,5 @@
 <?php
+    include "../Global/bot.php";
     session_start();//Inicio de control de sesiones
     $mensaje="";
     if(isset($_POST['btnAccion'])){
@@ -100,8 +101,9 @@
                 $total = $_POST['Total'];
                 $id_usuario = $_SESSION['ID_Usuario'];
                 $domicilio = $_POST['Domicilio'];
+                date_default_timezone_set('America/Mexico_City');
                 $fecha = date("Y-m-d H:i:s");
-                $SQL = "INSERT INTO Ventas VALUES (null, '".$id_usuario."','".$no_tarjeta."','".$fecha."','".$total."','".$domicilio."')";
+                $SQL = "INSERT INTO Ventas VALUES (null, '".$id_usuario."','".$no_tarjeta."','".$fecha."','".$total."','".$domicilio."', 0)";
                 mysqli_query($conexion_normal,$SQL);
                 $SQL = "SELECT ID_Venta FROM Ventas WHERE ID_Usuario = '".$id_usuario."' AND Fecha = '".$fecha."'";
                 $result = mysqli_query($conexion_normal,$SQL);
@@ -113,8 +115,12 @@
                     mysqli_query($conexion_normal,$SQL);
                     unset($_SESSION['CARRITO'][$indice]);
                 }
-                header("Location: tienda.php");
+                if($_POST['Codigo'] != 0){
+                    sendMessageCompra($_POST['Codigo'], $_POST['Nombre'],$total,$fecha);
+                    header("Location: tienda.php");
+                }
             break;
+
         }
     }
 ?>

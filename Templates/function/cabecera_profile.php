@@ -34,36 +34,22 @@
                         echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
                     ?>)</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="historial.php">Historial de compras</span></a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <?php
-                    if(!isset($_SESSION['ID_Usuario'])){
-                        ?>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="login.php">Inicio de Sesión</span></a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="registrar.php">Crear una cuenta</span></a>
-                            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="account.php">
                         <?php
-                    }else{
+                            $SQL = "SELECT Nombre FROM Usuario WHERE ID_Usuario = '".$_SESSION['ID_Usuario']."' ";
+                            $result = mysqli_query($conexion_normal,$SQL);
+                            $consulta = mysqli_fetch_array($result);
+                            echo $consulta['Nombre'];
                         ?>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="account.php">
-                                    <?php
-                                        $SQL = "SELECT Nombre FROM Usuario WHERE ID_Usuario = '".$_SESSION['ID_Usuario']."' ";
-                                        $result = mysqli_query($conexion_normal,$SQL);
-                                        $consulta = mysqli_fetch_array($result);
-                                        echo $consulta['Nombre'];
-                                    ?>
-                                </span></a>
-                            </li>
-                                <a class="nav-link" href="function/cerrarsesion.php">Cerrar Sesion</span></a>
-                            </li>
-                        <?php
-                    }
-                ?>
-                
+                        </li>
+                            <a class="nav-link" href="function/cerrarsesion.php">Cerrar Sesion</span></a>
+                        </li>
             </ul>
         </div>
     </nav>

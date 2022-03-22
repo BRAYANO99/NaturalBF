@@ -24,19 +24,19 @@
      
      <div class="input-contenedor">
          <i class="fas fa-user icon"></i>
-         <input type="text" placeholder="Nombre Completo" name="nombre">
+         <input type="text" placeholder="Nombre Completo" name="nombre" required>
          
          </div>
          
          <div class="input-contenedor">
          <i class="fas fa-envelope icon"></i>
-         <input type="text" placeholder="Correo Electronico" name="correo">
+         <input type="text" placeholder="Correo Electronico" name="correo" required>
          
          </div>
          
          <div class="input-contenedor">
         <i class="fas fa-key icon"></i>
-         <input type="password" placeholder="Contraseña" name="pass">
+         <input type="password" placeholder="Contraseña" name="pass" required>
          
          </div>
          <input type="submit" value="Registrate" class="button" name="registro">
@@ -52,11 +52,12 @@
                 $nombre = $_POST['nombre'];
                 $correo = $_POST['correo'];
                 $pass = $_POST['pass'];
-                $SQL = "INSERT INTO Usuario (Nombre, Correo, Pass) VALUES ('".$nombre."','".$correo."','".$pass."')";
+                $SQL = "INSERT INTO Usuario (ID_Telegram, Nombre, Correo, Pass) VALUES (0,'".$nombre."','".$correo."','".$pass."')";
                 if(mysqli_query($conexion_normal,$SQL)){
                     ?>
-                        <h3>Registro Hecho</h3>
+                        <script>alert('Registro hecho');</script>
                     <?php
+                    header("Location: index.html");
                 }else{
                     ?>
                         <h3>Registro Erroneo</h3>

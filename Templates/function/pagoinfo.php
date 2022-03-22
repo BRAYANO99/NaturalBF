@@ -1,9 +1,13 @@
 <table class="table table-light table-bordered">
     <?php
-        $SQL = "SELECT Nombre FROM Usuario WHERE ID_Usuario = '".$_SESSION['ID_Usuario']."' ";
+        $SQL = "SELECT ID_Telegram, Nombre FROM Usuario WHERE ID_Usuario = '".$_SESSION['ID_Usuario']."' ";
         $result = mysqli_query($conexion_normal,$SQL);
         $consulta = mysqli_fetch_array($result);
         echo "<h2>Nombre del cliente ".$consulta['Nombre']." </h2>";
+        if($consulta['ID_Telegram'] != '0'){
+            $id_telegram = $consulta['ID_Telegram'];
+            $nombre = $consulta['Nombre'];
+        }
     ?>
     <br><br>
     <h3>Verifica que tu compra sea la deseada</h3>
@@ -37,12 +41,14 @@
         <tr>
             <td colspan="4">
                 <form action="" method="post">
+                    <input type="hidden" name="Nombre" value="<?php echo $nombre?>">
+                    <input type="hidden" name="Codigo" value="<?php echo $id_telegram?>">
                     <label for="my-input">Domicilio a entregar</label>
                     <input type="text" id="my-input" name="Domicilio" class="form-control" placeholder="Escribe el domicilio a entregar" required>
                     <label for="my-input">Tarjeta</label>
-                    <input maxlength="16" name="Tarjeta" onkeypress="return Number(event)" type="text" id="my-input" class="form-control" placeholder="Escribe tu numero de tarjeta bancaria" required>
+                    <input maxlength="16" minlength="16" name="Tarjeta" onkeypress="return Number(event)" type="text" id="my-input" class="form-control" placeholder="Escribe tu numero de tarjeta bancaria" required>
                     <label for="my-input">CVV</label>
-                    <input maxlength="3" type="text" id="my-input" name="CVV" class="form-control" placeholder="CVV" onkeypress="return Number(event)" required>
+                    <input maxlength="3" minlength="3" type="text" id="my-input" name="CVV" class="form-control" placeholder="CVV" onkeypress="return Number(event)" required>
                     <input type="hidden" name="Total" id="cantidad" value="<?php echo $total?>">
                     <br>
                     <br>

@@ -28,6 +28,7 @@ CREATE TABLE Ventas (
     Fecha DATETIME NOT NULL,
     Total DECIMAL(60,2) NOT NULL,
     Domicilio VARCHAR(200) NOT NULL,
+    Entrega BOOLEAN NOT NULL,
     PRIMARY KEY  (ID_Venta),
     FOREIGN KEY (ID_Usuario) REFERENCES Usuario (ID_Usuario)
 ); 
